@@ -17,3 +17,6 @@ end
 
 gem 'slim'
 gem 'bootstrap-sass'
+
+gem 'less'
+gem 'therubyracer'
