@@ -6,34 +6,26 @@
     %meta{:name => "description", :content => ""}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     
-    / Use title if it's in the page YAML frontmatter
+    -# Use title if it's in the page YAML frontmatter
     - title = current_page.data.title || ""
     - title = "N.S.Lin | " + title
     %title= title
 
-    / Le HTML5 shim, for IE6-8 support of HTML elements
+    -# Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       %script{:src => "/js/lib/html5shiv.js" }   
 
     = stylesheet_link_tag "main", media: "all"
-    %script{:src => "/js/lib/jquery-2.0.3.min.js"}
+    
+    -# %script{:src => "/js/lib/jquery-2.0.3.min.js"}   
+    = javascript_include_tag "preload"
+    %script{:src => "https://www.google.com/jsapi", :type => "text/javascript"}
 
   %body{:class => "#{page_classes}"}
     .navbar.navbar-static-top.navbar-inverse
       .navbar-inner
         .container
-          
-          %a.brand{:href => "/"}= "N.S.Lin"
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Home", "/"
-              %li.dropdown
-                %a.dropdown-toggle{:href =>'#', 'data-toggle' => 'dropdown'}
-                  Dropdown
-                  <b class="caret"></b>
-                %ul.dropdown-menu
-                  %li= link_to "Link 1", "#"
-              
+          = partial "topbar_nav"
 
     .container
       .row
@@ -41,15 +33,16 @@
           = yield
 
         .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "path1"
-              %li= link_to "Link 2", "path2"
-              %li= link_to "Link 3", "path3"
+          = partial "sidebar_nav"
 
       = partial "layouts/footer"
 
-    /! JavaScripts
-    / Placed at the end of the document so the pages load faster
+    -# ! JavaScripts
+    -# Placed at the end of the document so the pages load faster
+    
+    -# load the google Feed API
+    
+      
+    -# load my scripts
     = javascript_include_tag "main"
+    

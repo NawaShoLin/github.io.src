@@ -1,0 +1,15 @@
+---
+title: "About"
+---
+%div
+  %h1= "About"
+  
+  %div
+    %ul.nav.nav-tabs
+      %li#me= link_to "Me", "#"
+      %li= link_to "Website", "#"
+    #about-content
+  :javascript
+    $('#me').addClass('active');
+    $('#about-content').html('Test. <br/>, Here is the text.');
+    

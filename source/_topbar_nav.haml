@@ -1,0 +1,14 @@
+%a.brand{:href => "/"}= "N.S.Lin"
+.container.nav-collapse
+  %ul.nav
+    %li= link_to "Home", "/"   
+    %li= link_to "About", "/about" 
+    %li= link_to "Notes", "/notes"
+    %li.dropdown
+      %a.dropdown-toggle{:href =>'#', 'data-toggle' => 'dropdown'}
+        Blogs
+        <b class="caret"></b>
+      %ul.dropdown-menu
+        %li= link_to "Life &amp; ACG", "http://qmono2.blogspot.tw", :target => '_blank'
+        %li= link_to "Programing", "http://0w0.logdown.com", :target => '_blank'
+    %li= link_to "Disqus", "/disqus"
