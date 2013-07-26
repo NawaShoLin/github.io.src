@@ -1,11 +1,11 @@
+%button.btn.btn-navbar{:type => "button", 'data-toggle'=> "collapse", 'data-target' => ".nav-collapse"}
+  %span.icon-bar
+  %span.icon-bar
+  %span.icon-bar
+  %span.icon-bar
+  %span.icon-bar
 %a.brand{:href => "/"}= "N.S.Lin"
-.container.nav-collapse
-  %button.btn.btn-navbar{:type => "button", 'data-toggle'=> "collapse", 'data-target' => ".nav-collapse"}
-    %span.icon-bar
-    %span.icon-bar
-    %span.icon-bar
-    %span.icon-bar
-    %span.icon-bar
+.nav-collapse.collapse
   %ul.nav.nav-collapse
     %li= link_to "Home", "/"   
     %li= link_to "About", "/about" 
