@@ -3,17 +3,17 @@ title: "About"
 ---
 <div class="hero-unit">
   <h1>About</h1>
-  <div id="main-article">
-    <ul class="nav nav-pills">
-      <li id="me"><%= link_to "Me", "#" %></li>
-      <li><%= link_to "Website", "#" %></li>
+  
+  <div id="main-article" class="switchable">
+    <ul class="nav nav-pills sw-ul">
+      <li id="me" class="active"><%= link_to "Me", "#" %></li>
+      <li id='website'><%= link_to "Website", "#" %></li>
     </ul>
-    <div id="about-content" class="well hero-inner-post"></div>
+    
+    <div id="me-content" class="well hero-inner-post sw-div">
+      <h3>About me</h3>
+      Test. <br/>, Here is the text.
+    </div>
+    
   </div>
 </div>
-
-<script>
-  $('#me').addClass('active');
-  $('#about-content').html('<h3>About me</h3>Test. <br/>, Here is the text.');
-  $('#main-article').css('margin-top', '+=24px');
-</script>   
