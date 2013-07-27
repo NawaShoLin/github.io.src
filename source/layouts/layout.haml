@@ -8,13 +8,14 @@
     
     -# Use title if it's in the page YAML frontmatter
     - title = current_page.data.title || ""
-    - title = "N.S.Lin | " + title
+    - title = "NS-Lin | " + title
     %title= title
 
     -# Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       %script{:src => "/js/lib/html5shiv.js" }   
-
+    
+    %link{:rel => "icon", :href =-> "/img/favicon.ico"} 
     = stylesheet_link_tag "main", media: "all"
 
   %body{:class => "#{page_classes}"}
