@@ -1,29 +1,32 @@
 (($)->
   
-  # Load right RSS bar datas
-  (->
-    cont = $('#rss-nav-ul')
-    loadFeeds cont, "http://qmono2.blogspot.com/feeds/posts/default", 5
-    undefined
+  loadFeeds = (feedObjects)->  
+    google.load("feeds", "1")
+    
+    initialize = ->
+      loadFeed = (container, url, num)->
+        feed = new google.feeds.Feed(url)
+        feed.setNumEntries(num) if num?
+        
+        feed.load((result)->
+          for entry in result.feed.entries
+            a  = $('<a></a>').attr({href: entry.link, target: '_blank'}).html(entry.title)
+            li = $('<li></li>').append(a)        
+            container.append(li)
+        )
+      for fo in feedObjects
+        loadFeed(fo.container, fo.url, fo.num)      
+            
+    google.setOnLoadCallback(initialize)
+  
+  # Load right RSS bar datas  
+  (-> 
+    owo = 
+      container:$('#rss-nav-ul')
+      url:"http://qmono2.blogspot.com/feeds/posts/default"
+      num:5
+    loadFeeds [owo]
   )()
-
-  # effects at #about
-  ###
-  (->
-    $('#main-article').css('margin-top', '+=24px')
-
-    runEffect = (ele)->
-      selectedEffect = "slide"
-      options = {}
-      ele.hide( selectedEffect, options, 1000, callback )
-      callback = ->
-
-    $("#me").click(->
-      runEffect($('#about-content'))
-      false
-    )
-  )()
-  ###
 
   # switchable class effect
   parseDash = (str, options={})->
@@ -63,8 +66,6 @@
     )
 
   ApplyswitchEffect('.switchable', 'blind', 640, 800)
-  
-  
 
   undefined
 )(jQuery)
