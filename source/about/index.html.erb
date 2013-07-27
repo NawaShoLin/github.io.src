@@ -10,14 +10,96 @@ title: "About"
       <li id='mywebsite-l'><%= link_to "Website", "#" %></li>
     </ul>
     
-    <div id="me-content" class="well hero-inner-post sw-div">
-      <h3>About me</h3>
-      Test. <br/>, Here is the text.
+    <div id="me-content" class="well hero-inner-post sw-div"> 
+      <article>
+        <h3>TeenSuu Lin</h3>
+        <section>
+          <h4>intro</h4>        
+          <p>
+            以時間來說快要畢業的大學生<br/>
+            三年前開始接觸 C/C++ ，最近寫的程式則以 Python, Ruby 居多<br/>
+            研究領域主要在 web 開發、遊戲設計與人工智慧<br/>
+
+            很喜歡 Functional Programming (Lisp, Haskell)，可惜近來除了寫 JS 以外，碰的機會比較少<br/>
+          </p>
+          <p>
+            喜歡看小說與動畫，稍微有研究耳機系統，相關心得可以在 Blog 找到<br/>
+          </p>
+        </section>
+        
+        
+        <section>
+          <h4>contact me</h4>        
+          <ul class="unstyled">
+            <li>github : <a href="https://github.com/NawaShoLin">NawaShoLin</a></li>            
+            <li>Google+ : <a href="https://plus.google.com/u/0/113261671659386871611">+NiwaSho Lin</a></li>
+            <li>Facebook : <a href="https://www.facebook.com/teensuu.lin">TeenSuu Lin</a></li>
+            <li>Twitter : <a href="https://twitter.com/dOwOb_org">@dOwOb_org</a></li>  
+          </ul>
+          <p>
+            您也可以在本站的<%= link_to "留言板", '/disqus' %>留言~
+          </p>
+        </section>
+        
+
+      </article>
     </div>
     
     <div id="mywebsite-content" class="well hero-inner-post sw-div" style="display: none">
-      <h3>Website</h3>
-      Test. <br/>, Here is the text.
+      <article>
+        <h3>From Vitali to Dr.Pepper</h3>
+        <section>
+          <h4>the name</h4>        
+          <p>
+            純粹把兩種我很喜歡的汽水湊起來而已<br/>
+            當然也可以腦補一下其深奧的意義<br/>
+          </p>
+        </section>
+        <section>
+          <h4>what for</h4>        
+          <p>
+            這個簡單的個人網站其實是為了練習和實驗一些技術來做的實驗品<br/>
+            所以目前內容有點少，還請見諒w<br/>
+          </p>
+        </section>        
+        
+        <section>
+          <h4>technologies</h4> 
+          <dl>
+            <dt><a href="http://middlemanapp.com">Middleman</a></dt>
+            <dd>
+              一個讓你寫 erb(or haml, less, coffee...), 可以用 layout、template<br/>
+              有點像是抽調 modle, 簡化 controller 的 Rails<br/>
+              而他會幫你編譯成 html, 非常方便!<br/>
+
+              <br/>
+              之前寫過純靜態的個人網站，維護性實在非常差<br/>
+              而我也不太想碰 php，總感覺寫起來有點醜<br/>
+              但經濟也很難養一個 Rails 站 (以用途來說的話也太小題大作w)<br/>
+              所以就用了這玩意<br/><br/>              
+            </dd>
+
+            <dt><a href="http://twitter.github.io/bootstrap">Twitter Bootstrap</a></dt>
+            <dd>懶人和樣式設計苦手的好夥伴<br/><br/> </dd>
+
+            <dt><a href="http://www.lavishbootstrap.com">Lavish</a></dt>
+            <dd>由一張圖片就可以生出網站配色! 可惜有段時間沒有更新了<br/><br/> </dd>
+
+            <dt><a href="http://jquery.com">jQuery</a> &amp; <a href="http://jqueryui.com">jQuery UI</a></dt>
+            <dd>特效和其他 JS 的主力函式庫<br/><br/></dd>
+
+            <dt><a href="https://developers.google.com/feed">Google Feed API</a></dt>
+            <dd>用來抓 Blog 的 RSS 資料<br/><br/></dd>
+
+            <dt><a href="http://www.vim.org">Vim</a>,
+                <a href="http://www.aptana.com">Aptana</a>,
+                <a href="http://www.sublimetext.com">Sublime Text</a></dt>
+            <dd>看心情使用不同的編輯器...<br/><br/></dd>
+
+          </dl>
+        </section>       
+
+      </article>
     </div>
     
   </div>
