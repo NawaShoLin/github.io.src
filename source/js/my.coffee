@@ -22,10 +22,15 @@
   # Load right RSS bar datas  
   (-> 
     owo = 
-      container:$('#rss-nav-ul')
+      container:$('#owo-rss-nav-ul')
       url:"http://qmono2.blogspot.com/feeds/posts/default"
       num:5
-    loadFeeds [owo]
+    logdown = 
+      container:$('#logdown-rss-nav-ul')
+      url:"http://feeds.feedburner.com/0w0"
+      num:5
+      
+    loadFeeds [owo, logdown]
   )()
 
   # switchable class effect
