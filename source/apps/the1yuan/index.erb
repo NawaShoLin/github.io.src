@@ -1,0 +1,118 @@
+---
+title: "The One Yuan"
+---
+<%= javascript_include_tag "lib/jquery-2.0.3.min.js" %>
+<%= javascript_include_tag "lib/the1yuan" %>
+
+<div class='hero-unit '>
+  <h1>The One Yuan</h1>
+  <div id="main-article" class="switchable">
+    <ul class="nav nav-pills sw-ul">
+      <li id="app-l" class="active"><%= link_to "Demo", "#" %></li>
+      <li id='about-l'><%= link_to "About", "#" %></li>
+    </ul>
+    
+    <div id="app-content" class="well hero-inner-post sw-div"> 
+      <article>
+        <h3>The One Yuan : 那重要的一塊錢</h3>
+        <div>
+          <form>
+            <label for='rate'>折扣率(Discount Rate) : </label>
+            <input type='number' name='rate' value='0.9'>
+
+            <table id="the1yuan-input-table" class="table">
+              <tr><th>商品名稱 (Name)</th><th>單價 (Price)</th><th>購買數量 (Number)</th></tr>
+              <tr class="item-row">
+                <td><input type="text" name="name" value="Item#1"></td>
+                <td><input type="number" name="price" value="0"></td>
+                <td><input type="number" name="num" value="0"></td>
+              </tr>
+              
+            </table>
+            <a href="#" id="add-item" class="btn">Add Item</a>
+            <a href="#compute" id="compute-the1yuan" class="btn">Compute</a>
+          </form>
+        </div>
+        <div id="result-div"></div>   
+      </article>
+    </div>
+    
+    <div id="about-content" class="well hero-inner-post sw-div" style="display: none">
+      <article>
+        <h3>關於本程式</h3> 
+        <p>      
+          在台灣的學校便利商店, 通常會給予學生九折(每家不同 大部分是九折或八九折)優惠 <br/>同時當他們遇到小數點的時候, 多半採取四捨五入制<br/> 所以就會產生以不同組合購買時, 會有不同的總價之情形<br/><br/>
+
+          舉例而言, 當你買了兩個16元的麵包 如果你一次付清, 那就是 16*2*0.9 = 28.8 = 29 元 <br/>但如果你分開結的話, 那會變成 16 * 0.9 = 14.4 = 14, 14 * 2 = 28 元<br/><br/>
+
+          而這個程式就是用來幫助您在便利商店中以最便宜的價格買到東西<br/>
+        </p>
+
+        <h3>TODO</h3>
+        <p>
+          目前使用的是最暴力的無腦演算法, 數量過大時速度會變很慢<br/>
+          因為程式是在用戶端執行, 在改版解決這個問題之前, 請不要虐待您自己的電腦 :P<br/><br/>
+
+          預計之後會改善演算, 並加入單品特殊折扣等功能<br/>
+        </p>
+
+        <h3>Open Source on Github</h3> 
+        <p>
+          <%= link_to "https://github.com/NawaShoLin/The-1-Yuan",
+                "https://github.com/NawaShoLin/The-1-Yuan", :target =>'_blank' %>
+        </p>
+      </article>
+    </div>
+    
+  </div>
+
+  	<br />  	
+  	
+  	
+</div>
+<script type="text/javascript">
+  $('#add-item').click(function () {
+    var tr = $('<tr class="item-row"></tr>');
+    itemId = $('#the1yuan-input-table tr').length
+    var inputNameTd =
+      $('<td></td>').append($('<input>')
+                    .attr({type: 'text', name:'name', value:'Item#'+itemId}));
+    var inputPriceTd =
+      $('<td></td>').append($('<input>').attr({type: 'number', name:'price', value:"0"}));
+    var inputNumTd =
+      $('<td></td>').append($('<input>').attr({type: 'number', name:'num', value:"0"}));
+    tr.append(inputNameTd).append(inputPriceTd).append(inputNumTd);
+    $('#the1yuan-input-table').append(tr);
+  })
+
+  $('#compute-the1yuan').click(function(){
+    var itemList = [];
+    $('#the1yuan-input-table .item-row').each(function(){
+      var item = {};
+      item.name = $(this).find('[name="name"]').val();
+      item.price = Number($(this).find('[name="price"]').val());
+      item.num = Number($(this).find('[name="num"]').val());
+      itemList.push(item);
+    })
+
+    var rate = Number($('input[name="rate"]').val())
+    var result = the1yuan(itemList, rate);
+    var rDiv = $('#result-div');
+    rDiv.html('');
+    var i,j;
+    for (i = 0 ; i < result.length ; i += 1) {
+      var h = $('<h4></h4>').html(i+1);
+      var iDiv = $('<div></div>');
+      for (j = 0 ; j < result[i].length ; j += 1) {
+        iDiv.append(' | ' + result[i][j].name + ' : ' + result[i][j].num);
+      }
+      
+      rDiv.append(h).append(iDiv);
+    }
+
+    var bestCost = the1yuanCost(result, rate);
+    var nCost = normalCost(itemList, rate);
+    rDiv.append('<hr/><p>一次買完 : ' + nCost +'</p>')
+    rDiv.append('<p>最佳化消費 : ' + bestCost + '<p>');
+  })
+</script>

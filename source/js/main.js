@@ -20,3 +20,4 @@
 //= stub ./lib/html5shiv.js
 //= stub ./lib/jquery-2.0.3.min.js
 //= stub ./lib/jquery-ui-1.9.2.min.js
+//= stub ./lib/the1yuan
