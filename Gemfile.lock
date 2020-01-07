@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (3.2.14)
+    activesupport (3.2.22.5)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     bootstrap-sass (2.3.2.1)
@@ -28,7 +28,7 @@ GEM
       tilt
     hike (1.2.3)
     http_parser.rb (0.5.3)
-    i18n (0.6.4)
+    i18n (0.6.11)
     kramdown (1.1.0)
     less (2.3.2)
       commonjs (~> 0.2.6)
@@ -69,7 +69,7 @@ GEM
       sprockets (~> 2.1)
       sprockets-helpers (~> 1.0.0)
       sprockets-sass (~> 1.0.0)
-    multi_json (1.7.7)
+    multi_json (1.14.1)
     rack (1.6.12)
     rack-livereload (0.3.15)
       rack
